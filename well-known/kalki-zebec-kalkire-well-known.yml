@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of /.well-known/* and /llms.txt on Zebec hosts
+notes: >-
+  No /.well-known discovery documents are published on any Zebec host. The docs
+  host publishes an llms.txt (captured separately at llms/). dev.zebec.io did not
+  resolve at probe time.
+hosts:
+  - host: https://zebec.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.zebec.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 200
+        file: ../llms/kalki-zebec-kalkire-llms.txt
+  - host: https://dev.zebec.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+        note: host did not resolve/connect at probe time
